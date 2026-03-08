@@ -14,7 +14,7 @@ valores_k = {
     }
 }
 
-# --- Tabela 33 com imagens por método ---
+# --- Tabela 33 inicial ---
 tabela_33_categorias = {
     "Eletroduto de Seção Circular Embutido em Parede Termicamente Isolante": {
         "Condutores isolados ou cabos unipolares": {
@@ -46,7 +46,7 @@ tabela_33_categorias = {
     },
 }
 
-# --- Expansão da Tabela 33 ---
+# --- Expansão da Tabela 33 (até método 75) ---
 tabela_33_categorias.update({
     "Eletroduto Embutido em Alvenaria": {
         "Condutores isolados ou cabos unipolares": {
@@ -58,6 +58,16 @@ tabela_33_categorias.update({
             "imagem": "https://copilot.microsoft.com/th/id/BCO.eletroduto_embutido_multipolar.png"
         },
     },
+    "Eletroduto Embutido em Laje": {
+        "Cabos unipolares": {
+            "metodo": 23, "referencia": "B3",
+            "imagem": "https://copilot.microsoft.com/th/id/BCO.eletroduto_laje_unipolar.png"
+        },
+        "Cabos multipolares": {
+            "metodo": 24, "referencia": "B4",
+            "imagem": "https://copilot.microsoft.com/th/id/BCO.eletroduto_laje_multipolar.png"
+        },
+    },
     "Eletroduto Aparente": {
         "Condutores isolados ou cabos unipolares": {
             "metodo": 31, "referencia": "C1",
@@ -66,6 +76,12 @@ tabela_33_categorias.update({
         "Cabo multipolar": {
             "metodo": 32, "referencia": "C2",
             "imagem": "https://copilot.microsoft.com/th/id/BCO.eletroduto_aparente_multipolar.png"
+        },
+    },
+    "Eletroduto Enterrado": {
+        "Cabos unipolares ou multipolar": {
+            "metodo": 33, "referencia": "C3",
+            "imagem": "https://copilot.microsoft.com/th/id/BCO.eletroduto_enterrado.png"
         },
     },
     "Em Leito": {
@@ -84,6 +100,12 @@ tabela_33_categorias.update({
             "imagem": "https://copilot.microsoft.com/th/id/BCO.canaleta_embutida.png"
         },
     },
+    "Canaleta Aparente": {
+        "Cabos unipolares ou multipolar": {
+            "metodo": 52, "referencia": "H2",
+            "imagem": "https://copilot.microsoft.com/th/id/BCO.canaleta_aparente.png"
+        },
+    },
     "Fixado no Teto": {
         "Cabos unipolares ou multipolar": {
             "metodo": 71, "referencia": "I",
@@ -98,36 +120,39 @@ tabela_33_categorias.update({
     },
 })
 
-# --- Interface Streamlit (única, no final) ---
-st.title("NBR5410 - Ferramenta Interativa")
-
-# --- Seção Tabela 30 ---
-st.header("Tabela 30 - Valores de K")
-material = st.selectbox("Material:", list(valores_k.keys()))
-isolacao = st.selectbox("Isolação:", ["PVC", "EPR/XLPE"])
-if isolacao == "PVC":
-    bitola = st.radio("Seção do condutor:", ["≤ 300 mm²", "> 300 mm²"])
-    chave = "PVC_<=300" if bitola == "≤ 300 mm²" else "PVC_>300"
-else:
-    chave = "EPR_XLPE"
-dados = valores_k[material][chave]
-st.success(
-    f"K = {dados['K']}, Temp inicial = {dados['Temp_inicial']}°C, Temp final = {dados['Temp_final']}°C"
-)
-
-# --- Seção Tabela 33 ---
-st.header("Tabela 33 - Métodos de Instalação")
-categoria = st.selectbox("Selecione a categoria de instalação:", list(tabela_33_categorias.keys()))
-descricao = st.selectbox("Selecione a descrição:", list(tabela_33_categorias[categoria].keys()))
-dados33 = tabela_33_categorias[categoria][descricao]
-st.success(
-    f"Descrição: {descricao}\n"
-    f"Método de instalação: {dados33['metodo']}\n"
-    f"Referência: {dados33['referencia']}"
-)
-if "imagem" in dados33:
-    st.image(
-        dados33["imagem"],
-        caption=f"Ilustração: Método {dados33['metodo']}",
-        use_column_width=True
+# --- Funções de interface ---
+def mostrar_tabela30():
+    st.header("Tabela 30 - Valores de K")
+    material = st.selectbox("Material:", list(valores_k.keys()))
+    isolacao = st.selectbox("Isolação:", ["PVC", "EPR/XLPE"])
+    if isolacao == "PVC":
+        bitola = st.radio("Seção do condutor:", ["≤ 300 mm²", "> 300 mm²"])
+        chave = "PVC_<=300" if bitola == "≤ 300 mm²" else "PVC_>300"
+    else:
+        chave = "EPR_XLPE"
+    dados = valores_k[material][chave]
+    st.success(
+        f"K = {dados['K']}, Temp inicial = {dados['Temp_inicial']}°C, Temp final = {dados['Temp_final']}°C"
     )
+
+def mostrar_tabela33():
+    st.header("Tabela 33 - Métodos de Instalação")
+    categoria = st.selectbox("Selecione a categoria de instalação:", list(tabela_33_categorias.keys()))
+    descricao = st.selectbox("Selecione a descrição:", list(tabela_33_categorias[categoria].keys()))
+    dados33 = tabela_33_categorias[categoria][descricao]
+    st.success(
+        f"Descrição: {descricao}\n"
+        f"Método de instalação: {dados33['metodo']}\n"
+        f"Referência: {dados33['referencia']}"
+    )
+    if "imagem" in dados33:
+        st.image(
+            dados33["imagem"],
+            caption=f"Ilustração: Método {dados33['metodo']}",
+            use_column_width=True
+        )
+
+# --- Execução principal ---
+st.title("NBR5410 - Ferramenta Interativa")
+mostrar_tabela30()
+mostrar_tabela33()
