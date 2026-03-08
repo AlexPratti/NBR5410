@@ -14,7 +14,7 @@ valores_k = {
     }
 }
 
-# --- Tabela 33 ---
+# --- Tabela 33 (exemplo reduzido) ---
 tabela_33_categorias = {
     "Eletroduto de Seção Circular Embutido em Parede Termicamente Isolante": {
         "Condutores isolados ou cabos unipolares": {
@@ -26,12 +26,12 @@ tabela_33_categorias = {
             "imagem": "https://copilot.microsoft.com/th/id/BCO.a26ec849-7b9d-4bf5-88e6-70c4155d28c2.png"
         },
     },
-    # ... demais métodos ...
+    # ... continue expandindo até método 75 ...
 }
 
 # --- Funções de interface ---
 def mostrar_tabela30():
-    st.header("Tabela 30 - Valores de K")
+    st.subheader("Tabela 30 - Valores de K")
     material = st.selectbox("Material:", list(valores_k.keys()))
     isolacao = st.selectbox("Isolação:", ["PVC", "EPR/XLPE"])
     if isolacao == "PVC":
@@ -40,20 +40,22 @@ def mostrar_tabela30():
     else:
         chave = "EPR_XLPE"
     dados = valores_k[material][chave]
-    st.success(
-        f"K = {dados['K']}, Temp inicial = {dados['Temp_inicial']}°C, Temp final = {dados['Temp_final']}°C"
-    )
+    st.markdown(f"""
+    **K:** {dados['K']}  
+    **Temperatura inicial:** {dados['Temp_inicial']}°C  
+    **Temperatura final:** {dados['Temp_final']}°C
+    """)
 
 def mostrar_tabela33():
-    st.header("Tabela 33 - Métodos de Instalação")
+    st.subheader("Tabela 33 - Métodos de Instalação")
     categoria = st.selectbox("Selecione a categoria de instalação:", list(tabela_33_categorias.keys()))
     descricao = st.selectbox("Selecione a descrição:", list(tabela_33_categorias[categoria].keys()))
     dados33 = tabela_33_categorias[categoria][descricao]
-    st.success(
-        f"Descrição: {descricao}\n"
-        f"Método de instalação: {dados33['metodo']}\n"
-        f"Referência: {dados33['referencia']}"
-    )
+    st.markdown(f"""
+    **Descrição:** {descricao}  
+    **Método de instalação:** {dados33['metodo']}  
+    **Referência:** {dados33['referencia']}
+    """)
     if "imagem" in dados33:
         st.image(
             dados33["imagem"],
@@ -64,7 +66,7 @@ def mostrar_tabela33():
 # --- Execução principal com abas ---
 st.title("NBR5410 - Ferramenta Interativa")
 
-tab1, tab2 = st.tabs(["Tabela 30 - Valores de K", "Tabela 33 - Métodos de Instalação"])
+tab1, tab2 = st.tabs(["Tabela 30", "Tabela 33"])
 
 with tab1:
     mostrar_tabela30()
