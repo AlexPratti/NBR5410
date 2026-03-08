@@ -148,8 +148,7 @@ tabela_39 = {
 }
 
 # --- Função de cálculo ---
-def calcular_secao(material, isolacao, referencia, n_condutores):
-    # Seleciona a tabela conforme a isolação
+def calcular_secao(material, isolacao, referencia, n_condutores, corrente_projeto):
     if isolacao.upper() == "PVC":
         tabela = tabela_36[material]
     elif isolacao.upper() == "EPR":
@@ -161,17 +160,15 @@ def calcular_secao(material, isolacao, referencia, n_condutores):
     else:
         raise ValueError(f"Isolação '{isolacao}' não reconhecida")
 
-    # Percorre as seções disponíveis na tabela escolhida
     for secao, valores in tabela.items():
         if referencia in valores:
             if n_condutores in valores[referencia]:
                 corrente_max = valores[referencia][n_condutores]
-                # Verifica se suporta a corrente de projeto
-                if dados33["corrente_projeto"] <= corrente_max:
+                if corrente_projeto <= corrente_max:
                     return secao
 
-    # Se não encontrou seção adequada
     raise ValueError("Não foi possível dimensionar a seção mínima para os parâmetros fornecidos")
+
 
 
 
