@@ -14,21 +14,6 @@ valores_k = {
     }
 }
 
-# --- Tabela 33 (exemplo reduzido) ---
-tabela_33_categorias = {
-    "Eletroduto de Seção Circular Embutido em Parede Termicamente Isolante": {
-        "Condutores isolados ou cabos unipolares": {
-            "metodo": 1, "referencia": "A1",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.a26ec849-7b9d-4bf5-88e6-70c4155d28c2.png"
-        },
-        "Cabo multipolar": {
-            "metodo": 2, "referencia": "A2",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.a26ec849-7b9d-4bf5-88e6-70c4155d28c2.png"
-        },
-    },
-    # ... continue expandindo até método 75 ...
-}
-
 # --- Funções de interface ---
 def mostrar_tabela30():
     st.subheader("Tabela 30 - Valores de K")
