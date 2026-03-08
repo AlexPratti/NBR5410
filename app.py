@@ -140,11 +140,12 @@ def mostrar_tabela33():
     categoria = st.selectbox("Selecione a categoria de instalação:", list(tabela_33_categorias.keys()))
     descricao = st.selectbox("Selecione a descrição:", list(tabela_33_categorias[categoria].keys()))
     dados33 = tabela_33_categorias[categoria][descricao]
-    st.success(
-        f"Descrição: {descricao}\n"
-        f"Método de instalação: {dados33['metodo']}\n"
-        f"Referência: {dados33['referencia']}"
-    )
+    st.markdown(f"""
+        **Descrição:** {descricao}  
+        **Método de instalação:** {dados33['metodo']}  
+        **Referência:** {dados33['referencia']}
+    """)
+
     if "imagem" in dados33:
         st.image(
             dados33["imagem"],
