@@ -148,24 +148,31 @@ tabela_39 = {
 }
 
 # --- Função de cálculo ---
-def calcular_secao(material, isolacao, metodo_ref, n_condutores, corrente_projeto):
-    if isolacao == "PVC":
-        if metodo_ref in ["E","F","G"]:
-            tabela = tabela_38[material]
-        else:
-            tabela = tabela_36[material]
-    else:  # EPR ou XLPE
-        if metodo_ref in ["E","F","G"]:
-            tabela = tabela_39[material]
-        else:
-            tabela = tabela_37[material]
+def calcular_secao(material, isolacao, referencia, n_condutores):
+    # Seleciona a tabela conforme a isolação
+    if isolacao.upper() == "PVC":
+        tabela = tabela_36[material]
+    elif isolacao.upper() == "EPR":
+        tabela = tabela_37[material]
+    elif isolacao.upper() == "XLPE":
+        tabela = tabela_38[material]
+    elif isolacao.upper() == "HEPR":
+        tabela = tabela_39[material]
+    else:
+        raise ValueError(f"Isolação '{isolacao}' não reconhecida")
 
+    # Percorre as seções disponíveis na tabela escolhida
     for secao, valores in tabela.items():
-        if metodo_ref in valores and n_condutores in valores[metodo_ref]:
-            capacidade = valores[metodo_ref][n_condutores]
-            if capacidade >= corrente_projeto:
-                return secao
-    return None
+        if referencia in valores:
+            if n_condutores in valores[referencia]:
+                corrente_max = valores[referencia][n_condutores]
+                # Verifica se suporta a corrente de projeto
+                if dados33["corrente_projeto"] <= corrente_max:
+                    return secao
+
+    # Se não encontrou seção adequada
+    raise ValueError("Não foi possível dimensionar a seção mínima para os parâmetros fornecidos")
+
 
 # --- Interface Streamlit ---
 st.title("NBR5410 - Ferramenta Interativa")
