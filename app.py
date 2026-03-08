@@ -15,12 +15,120 @@ valores_k = {
 }
 
 # --- Tabela 33 organizada por categorias ---
+# --- Tabela 33 organizada por categorias ---
 tabela_33_categorias = {
     "Eletroduto de Seção Circular Embutido em Parede Termicamente Isolante": {
         "Condutores isolados ou cabos unipolares": {"metodo": 1, "referencia": "A1"},
         "Cabo multipolar": {"metodo": 2, "referencia": "A2"},
     },
-    # ... (demais categorias iguais ao seu código original) ...
+    "Eletroduto Aparente de Seção Circular Sobre Parede ou Espaçado desta Menos de 0,3 vezes o Diâmetro do Eletroduto": {
+        "Condutores isolados ou cabos unipolares": {"metodo": 3, "referencia": "B1"},
+        "Cabo multipolar": {"metodo": 4, "referencia": "B1"},
+    },
+    "Eletroduto Aparente de Seção Não Circular Sobre Parede": {
+        "Condutores isolados ou cabos unipolares": {"metodo": 5, "referencia": "B1"},
+        "Cabo multipolar": {"metodo": 6, "referencia": "B1"},
+    },
+    "Eletroduto de Seção Circular Embutido em Alvenaria": {
+        "Condutores isolados ou cabos unipolares": {"metodo": 7, "referencia": "B2"},
+        "Cabo multipolar": {"metodo": 8, "referencia": "B2"},
+    },
+    "Sobre Parede ou Espaçado desta Menos de 0,3 vezes o Diâmetro do Cabo": {
+        "Cabos unipolares ou multipolar": {"metodo": 11, "referencia": "C"},
+    },
+    "Fixado Diretamente no Teto": {
+        "Cabos unipolares ou multipolar": {"metodo": 11, "referencia": "C"},
+    },
+    "Afastado do Teto mais de 0,3 vezes o Diâmetro do Cabo": {
+        "Cabos unipolares ou multipolar": {"metodo": 11, "referencia": "C"},
+    },
+    "Bandeja Não-Perfurada, Perfilado ou Prateleira": {
+        "Cabos unipolares ou multipolar": {"metodo": 12, "referencia": "E/F"},
+    },
+    "Bandeja Não-Perfurada Horizontal ou Vertical": {
+        "Cabos unipolares": {"metodo": 13, "referencia": "F"},
+    },
+    "Suportes Horizontais, Eletrocalha Aramada ou Tela": {
+        "Cabos unipolares ou multipolar": {"metodo": 14, "referencia": "E/F"},
+    },
+    "Afastado(s) da Parede mais de 0,3 vezes o Diâmetro do Cabo": {
+        "Cabos unipolares ou multipolar": {"metodo": 15, "referencia": "E/F"},
+    },
+    "Em Leito": {
+        "Cabos unipolares ou multipolar": {"metodo": 16, "referencia": "E/F"},
+    },
+    "Suspenso(s) por Cabo de Suporte, Incorporado ou Não": {
+        "Cabos unipolares ou multipolar": {"metodo": 17, "referencia": "E/F"},
+    },
+    "Sobre Isoladores": {
+        "Condutores nus ou isolados": {"metodo": 18, "referencia": "G"},
+    },
+    "Em Espaço de Construção": {
+        "Cabos unipolares ou multipolar": {"metodo": 21, "referencia": "B1/B2"},
+    },
+    "Eletroduto de Seção Circular em Espaço de Construção": {
+        "Condutores isolados": {"metodo": 22, "referencia": "B1/B2"},
+        "Cabos unipolares ou multipolar": {"metodo": 23, "referencia": "B2"},
+    },
+    "Eletroduto de Seção Não-Circular ou Eletrocalha em Espaço de Construção": {
+        "Condutores isolados": {"metodo": 24, "referencia": "B1/B2"},
+        "Cabos unipolares ou multipolar": {"metodo": 25, "referencia": "B2"},
+    },
+    "Eletroduto de Seção Não-Circular Embutido em Alvenaria": {
+        "Condutores isolados": {"metodo": 26, "referencia": "B2/D1"},
+        "Cabos unipolares ou multipolar": {"metodo": 27, "referencia": "B2"},
+    },
+    "Eletrocalha Sobre Parede em Percurso Horizontal ou Vertical": {
+        "Condutores isolados ou cabos unipolares": {"metodo": 31, "referencia": "B1"},
+        "Cabo multipolar": {"metodo": 31, "referencia": "B2"},
+    },
+    "Canaleta Fechada Embutida no Piso": {
+        "Condutores isolados ou cabos unipolares": {"metodo": 33, "referencia": "B1"},
+        "Cabo multipolar": {"metodo": 34, "referencia": "B2"},
+    },
+    "Eletrocalha ou Perfilado Suspensa(o)": {
+        "Cabo multipolar": {"metodo": 36, "referencia": "B2"},
+    },
+    "Eletroduto de Seção Circular Contido em Canaleta Fechada em Percurso Horizontal ou Vertical": {
+        "Condutores isolados ou cabos unipolares": {"metodo": 41, "referencia": "B1/B2"},
+    },
+    "Eletroduto de Seção Circular Contido em Canaleta Ventilada Embutida no Piso": {
+        "Condutores isolados": {"metodo": 42, "referencia": "B1"},
+        "Cabos unipolares ou multipolar": {"metodo": 43, "referencia": "B1"},
+    },
+    "Embutido Diretamente em Parede Termicamente Isolante": {
+        "Cabo multipolar": {"metodo": 51, "referencia": "A1"},
+    },
+    "Embutido(s) Diretamente em Alvenaria sem Proteção Mecânica Adicional": {
+        "Cabos unipolares ou multipolar": {"metodo": 52, "referencia": "C"},
+    },
+    "Embutido(s) Diretamente em Alvenaria com Proteção Mecânica Adicional": {
+        "Cabos unipolares ou multipolar": {"metodo": 53, "referencia": "C"},
+    },
+    "Eletroduto (de Seção Circular ou Não) ou em Canaleta não Ventilada Enterrada(o)": {
+        "Cabo multipolar": {"metodo": 61, "referencia": "D"},
+        "Cabos unipolares": {"metodo": 61, "referencia": "D"},
+    },
+    "Diretamente Enterrados com Proteção Mecânica Adicional": {
+        "Cabos unipolares ou multipolar": {"metodo": 63, "referencia": "D"},
+    },
+    "Em Moldura": {
+        "Condutores isolados ou cabos unipolares": {"metodo": 71, "referencia": "A1"},
+    },
+    "Canaleta Provida de Separações Sobre Parede": {
+        "Condutores isolados ou cabos unipolares": {"metodo": 72, "referencia": "B1"},
+        "Cabo multipolar": {"metodo": 72, "referencia": "B2"},
+    },
+    "Embutido(s) em Caixilho de Porta": {
+                "Condutores isolados ou cabos unipolares": {"metodo": 74, "referencia": "A1"},
+    },
+    "Embutido(s) em Caixilho de Janela": {
+        "Condutores isolados ou cabos unipolares": {"metodo": 74, "referencia": "A1"},
+    },
+    "Canaleta Embutida em Parede": {
+        "Condutores isolados ou cabos unipolares": {"metodo": 75, "referencia": "B1"},
+        "Cabo multipolar": {"metodo": 75, "referencia": "B2"},
+    },
 }
 
 
