@@ -14,146 +14,82 @@ valores_k = {
     }
 }
 
-# --- Tabela 33 organizada por categorias ---
-tabela_33_categorias = {
-    "Eletroduto de Seção Circular Embutido em Parede Termicamente Isolante": {
-        "Condutores isolados ou cabos unipolares": {"metodo": 1, "referencia": "A1"},
-        "Cabo multipolar": {"metodo": 2, "referencia": "A2"},
+# --- Tabela 33 (simplificada) ---
+tabela_33_metodos = ["A1","A2","B1","B2","C","D","E","F","G"]
+
+# --- Tabelas de capacidade (exemplo simplificado; expandir com valores reais) ---
+tabela_36 = {
+    "Cobre": {
+        2.5: {"A1": {2: 24, 3: 20}, "B1": {2: 27, 3: 23}, "C": {2: 33, 3: 28}, "D": {2: 39, 3: 34}},
     },
-    "Eletroduto Aparente de Seção Circular Sobre Parede ou Espaçado desta Menos de 0,3 vezes o Diâmetro do Eletroduto": {
-        "Condutores isolados ou cabos unipolares": {"metodo": 3, "referencia": "B1"},
-        "Cabo multipolar": {"metodo": 4, "referencia": "B1"},
-    },
-    "Eletroduto Aparente de Seção Não Circular Sobre Parede": {
-        "Condutores isolados ou cabos unipolares": {"metodo": 5, "referencia": "B1"},
-        "Cabo multipolar": {"metodo": 6, "referencia": "B1"},
-    },
-    "Eletroduto de Seção Circular Embutido em Alvenaria": {
-        "Condutores isolados ou cabos unipolares": {"metodo": 7, "referencia": "B2"},
-        "Cabo multipolar": {"metodo": 8, "referencia": "B2"},
-    },
-    "Sobre Parede ou Espaçado desta Menos de 0,3 vezes o Diâmetro do Cabo": {
-        "Cabos unipolares ou multipolar": {"metodo": 11, "referencia": "C"},
-    },
-    "Fixado Diretamente no Teto": {
-        "Cabos unipolares ou multipolar": {"metodo": 11, "referencia": "C"},
-    },
-    "Afastado do Teto mais de 0,3 vezes o Diâmetro do Cabo": {
-        "Cabos unipolares ou multipolar": {"metodo": 11, "referencia": "C"},
-    },
-    "Bandeja Não-Perfurada, Perfilado ou Prateleira": {
-        "Cabos unipolares ou multipolar": {"metodo": 12, "referencia": "E/F"},
-    },
-    "Bandeja Não-Perfurada Horizontal ou Vertical": {
-        "Cabos unipolares": {"metodo": 13, "referencia": "F"},
-    },
-    "Suportes Horizontais, Eletrocalha Aramada ou Tela": {
-        "Cabos unipolares ou multipolar": {"metodo": 14, "referencia": "E/F"},
-    },
-    "Afastado(s) da Parede mais de 0,3 vezes o Diâmetro do Cabo": {
-        "Cabos unipolares ou multipolar": {"metodo": 15, "referencia": "E/F"},
-    },
-    "Em Leito": {
-        "Cabos unipolares ou multipolar": {"metodo": 16, "referencia": "E/F"},
-    },
-    "Suspenso(s) por Cabo de Suporte, Incorporado ou Não": {
-        "Cabos unipolares ou multipolar": {"metodo": 17, "referencia": "E/F"},
-    },
-    "Sobre Isoladores": {
-        "Condutores nus ou isolados": {"metodo": 18, "referencia": "G"},
-    },
-    "Em Espaço de Construção": {
-        "Cabos unipolares ou multipolar": {"metodo": 21, "referencia": "B1/B2"},
-    },
-    "Eletroduto de Seção Circular em Espaço de Construção": {
-        "Condutores isolados": {"metodo": 22, "referencia": "B1/B2"},
-        "Cabos unipolares ou multipolar": {"metodo": 23, "referencia": "B2"},
-    },
-    "Eletroduto de Seção Não-Circular ou Eletrocalha em Espaço de Construção": {
-        "Condutores isolados": {"metodo": 24, "referencia": "B1/B2"},
-        "Cabos unipolares ou multipolar": {"metodo": 25, "referencia": "B2"},
-    },
-    "Eletroduto de Seção Não-Circular Embutido em Alvenaria": {
-        "Condutores isolados": {"metodo": 26, "referencia": "B2/D1"},
-        "Cabos unipolares ou multipolar": {"metodo": 27, "referencia": "B2"},
-    },
-    "Eletrocalha Sobre Parede em Percurso Horizontal ou Vertical": {
-        "Condutores isolados ou cabos unipolares": {"metodo": 31, "referencia": "B1"},
-        "Cabo multipolar": {"metodo": 31, "referencia": "B2"},
-    },
-    "Canaleta Fechada Embutida no Piso": {
-        "Condutores isolados ou cabos unipolares": {"metodo": 33, "referencia": "B1"},
-        "Cabo multipolar": {"metodo": 34, "referencia": "B2"},
-    },
-    "Eletrocalha ou Perfilado Suspensa(o)": {
-        "Cabo multipolar": {"metodo": 36, "referencia": "B2"},
-    },
-    "Eletroduto de Seção Circular Contido em Canaleta Fechada em Percurso Horizontal ou Vertical": {
-        "Condutores isolados ou cabos unipolares": {"metodo": 41, "referencia": "B1/B2"},
-    },
-    "Eletroduto de Seção Circular Contido em Canaleta Ventilada Embutida no Piso": {
-        "Condutores isolados": {"metodo": 42, "referencia": "B1"},
-        "Cabos unipolares ou multipolar": {"metodo": 43, "referencia": "B1"},
-    },
-    "Embutido Diretamente em Parede Termicamente Isolante": {
-        "Cabo multipolar": {"metodo": 51, "referencia": "A1"},
-    },
-    "Embutido(s) Diretamente em Alvenaria sem Proteção Mecânica Adicional": {
-        "Cabos unipolares ou multipolar": {"metodo": 52, "referencia": "C"},
-    },
-    "Embutido(s) Diretamente em Alvenaria com Proteção Mecânica Adicional": {
-        "Cabos unipolares ou multipolar": {"metodo": 53, "referencia": "C"},
-    },
-    "Eletroduto (de Seção Circular ou Não) ou em Canaleta não Ventilada Enterrada(o)": {
-        "Cabo multipolar": {"metodo": 61, "referencia": "D"},
-        "Cabos unipolares": {"metodo": 61, "referencia": "D"},
-    },
-    "Diretamente Enterrados com Proteção Mecânica Adicional": {
-        "Cabos unipolares ou multipolar": {"metodo": 63, "referencia": "D"},
-    },
-    "Em Moldura": {
-        "Condutores isolados ou cabos unipolares": {"metodo": 71, "referencia": "A1"},
-    },
-    "Canaleta Provida de Separações Sobre Parede": {
-        "Condutores isolados ou cabos unipolares": {"metodo": 72, "referencia": "B1"},
-        "Cabo multipolar": {"metodo": 72, "referencia": "B2"},
-    },
-    "Embutido(s) em Caixilho de Porta": {
-    "Condutores isolados ou cabos unipolares": {"metodo": 74, "referencia": "A1"},
-},
-    "Embutido(s) em Caixilho de Janela": {
-        "Condutores isolados ou cabos unipolares": {"metodo": 74, "referencia": "A1"},
-    },
-    "Canaleta Embutida em Parede": {
-        "Condutores isolados ou cabos unipolares": {"metodo": 75, "referencia": "B1"},
-        "Cabo multipolar": {"metodo": 75, "referencia": "B2"},
-    },
+    "Alumínio": {
+        2.5: {"A1": {2: 19, 3: 16}, "B1": {2: 21, 3: 18}, "C": {2: 26, 3: 22}, "D": {2: 31, 3: 27}},
+    }
 }
+
+tabela_37 = {
+    "Cobre": {
+        2.5: {"A1": {2: 27, 3: 23}, "B1": {2: 30, 3: 26}, "C": {2: 36, 3: 31}, "D": {2: 42, 3: 37}},
+    },
+    "Alumínio": {
+        2.5: {"A1": {2: 21, 3: 18}, "B1": {2: 24, 3: 20}, "C": {2: 29, 3: 25}, "D": {2: 34, 3: 29}},
+    }
+}
+
+tabela_38 = {
+    "Cobre": {
+        2.5: {"E": {2: 28, 3: 24}, "F": {2: 30, 3: 26}, "G": {2: 32, 3: 27}},
+    },
+    "Alumínio": {
+        2.5: {"E": {2: 22, 3: 19}, "F": {2: 24, 3: 20}, "G": {2: 25, 3: 21}},
+    }
+}
+
+tabela_39 = {
+    "Cobre": {
+        2.5: {"E": {2: 32, 3: 28}, "F": {2: 34, 3: 30}, "G": {2: 36, 3: 31}},
+    },
+    "Alumínio": {
+        2.5: {"E": {2: 25, 3: 21}, "F": {2: 27, 3: 23}, "G": {2: 28, 3: 24}},
+    }
+}
+
+# --- Função de cálculo ---
+def calcular_secao(material, isolacao, metodo_ref, n_condutores, corrente_projeto):
+    if isolacao == "PVC":
+        if metodo_ref in ["E","F","G"]:
+            tabela = tabela_38[material]
+        else:
+            tabela = tabela_36[material]
+    else:  # EPR ou XLPE
+        if metodo_ref in ["E","F","G"]:
+            tabela = tabela_39[material]
+        else:
+            tabela = tabela_37[material]
+
+    for secao, valores in tabela.items():
+        if metodo_ref in valores and n_condutores in valores[metodo_ref]:
+            capacidade = valores[metodo_ref][n_condutores]
+            if capacidade >= corrente_projeto:
+                return secao
+    return None
 
 # --- Interface Streamlit ---
 st.title("NBR5410 - Ferramenta Interativa")
 
-# --- Seção Tabela 30 ---
 st.header("Tabela 30 - Valores de K")
 material = st.selectbox("Material:", list(valores_k.keys()))
-isolacao = st.selectbox("Isolação:", ["PVC", "EPR/XLPE"])
-if isolacao == "PVC":
-    bitola = st.radio("Seção do condutor:", ["≤ 300 mm²", "> 300 mm²"])
-    chave = "PVC_<=300" if bitola == "≤ 300 mm²" else "PVC_>300"
-else:
-    chave = "EPR_XLPE"
-dados = valores_k[material][chave]
-st.success(f"K = {dados['K']}, Temp inicial = {dados['Temp_inicial']}°C, Temp final = {dados['Temp_final']}°C")
+isolacao = st.selectbox("Isolação:", ["PVC", "EPR", "XLPE"])
 
-# --- Seção Tabela 33 ---
 st.header("Tabela 33 - Métodos de Instalação")
+metodo_ref = st.selectbox("Método de referência:", tabela_33_metodos)
 
-# Primeiro o usuário escolhe a categoria
-categoria = st.selectbox("Selecione a categoria de instalação:", list(tabela_33_categorias.keys()))
+n_condutores = st.radio("Número de condutores carregados:", [2,3,4])
+corrente_projeto = st.number_input("Corrente de projeto (A):", min_value=1)
 
-# Depois escolhe a descrição dentro da categoria
-descricao = st.selectbox("Selecione a descrição:", list(tabela_33_categorias[categoria].keys()))
-
-# Resultado
-dados33 = tabela_33_categorias[categoria][descricao]
-st.success(f"Descrição: {descricao}\nMétodo de instalação: {dados33['metodo']}\nMétodo de referência: {dados33['referencia']}")
+if st.button("Calcular"):
+    secao = calcular_secao(material, isolacao, metodo_ref, n_condutores, corrente_projeto)
+    if secao:
+        st.success(f"Seção mínima: {secao} mm² ({material}, {isolacao}, método {metodo_ref}, {n_condutores} condutores)")
+    else:
+        st.error("Não foi encontrada seção adequada para os parâmetros informados.")
