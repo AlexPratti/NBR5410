@@ -26,7 +26,7 @@ tabela_33_categorias = {
     "Cabo multipolar embutido diretamente em parede termicamente isolante": {"metodo": 51, "referencia": "A1"},
     },
     # ... (demais categorias iguais ao seu código original) ...
-}
+
 
 tabela_36_cobre = {
     0.5: {"A1": {2: 7, 3: 7}, "A2": {2: 7, 3: 7}, "B1": {2: 9, 3: 8}, "B2": {2: 9, 3: 8}, "C": {2: 10, 3: 9}, "D": {2: 12, 3: 10}},
