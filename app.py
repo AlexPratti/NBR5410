@@ -16,9 +16,14 @@ valores_k = {
 
 # --- Tabela 33 organizada por categorias ---
 tabela_33_categorias = {
-    "Eletroduto de Seção Circular Embutido em Parede Termicamente Isolante": {
-        "Condutores isolados ou cabos unipolares": {"metodo": 1, "referencia": "A1"},
-        "Cabo multipolar": {"metodo": 2, "referencia": "A2"},
+
+"Condutores isolados ou cabos unipolares em eletroduto de seção circular embutido em parede termicamente isolante": {"metodo": 1, "referencia": "A1"},
+    "Cabo multipolar em eletroduto de seção circular embutido em parede termicamente isolante": {"metodo": 2, "referencia": "A2"},
+    "Cabos unipolares ou cabo multipolar sobre parede ou espaçado desta menos de 0,3 vez o diâmetro do cabo": {"metodo": 11, "referencia": "C"},
+    "Cabos unipolares ou cabo multipolar em bandeja perfurada": {"metodo": 13, "referencia": "F (unipolares)"},
+    "Condutores nus ou isolados sobre isoladores": {"metodo": 18, "referencia": "G"},
+    "Cabos diretamente enterrados com proteção mecânica adicional": {"metodo": 63, "referencia": "D"},
+    "Cabo multipolar embutido diretamente em parede termicamente isolante": {"metodo": 51, "referencia": "A1"},
     },
     # ... (demais categorias iguais ao seu código original) ...
 }
