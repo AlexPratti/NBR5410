@@ -44,65 +44,8 @@ tabela_33_categorias = {
             "imagem": "https://copilot.microsoft.com/th/id/BCO.8c7b77da-d707-49c9-9fa4-b1a14083c262.png"
         },
     },
-    # Aqui você pode continuar adicionando os demais métodos (21–75)
 }
-# --- Interface Streamlit ---
-st.title("NBR5410 - Ferramenta Interativa")
 
-# --- Seção Tabela 30 ---
-st.header("Tabela 30 - Valores de K")
-
-# Seleção do material
-material = st.selectbox("Material:", list(valores_k.keys()))
-
-# Seleção da isolação
-isolacao = st.selectbox("Isolação:", ["PVC", "EPR/XLPE"])
-
-# Seleção da bitola quando isolação for PVC
-if isolacao == "PVC":
-    bitola = st.radio("Seção do condutor:", ["≤ 300 mm²", "> 300 mm²"])
-    chave = "PVC_<=300" if bitola == "≤ 300 mm²" else "PVC_>300"
-else:
-    chave = "EPR_XLPE"
-
-# Recupera os dados da tabela
-dados = valores_k[material][chave]
-
-# Exibe resultado
-st.success(
-    f"K = {dados['K']}, Temp inicial = {dados['Temp_inicial']}°C, Temp final = {dados['Temp_final']}°C"
-)
-
-# --- Seção Tabela 33 ---
-st.header("Tabela 33 - Métodos de Instalação")
-
-# Primeiro o usuário escolhe a categoria
-categoria = st.selectbox(
-    "Selecione a categoria de instalação:",
-    list(tabela_33_categorias.keys())
-)
-
-# Depois escolhe a descrição dentro da categoria
-descricao = st.selectbox(
-    "Selecione a descrição:",
-    list(tabela_33_categorias[categoria].keys())
-)
-
-# Resultado
-dados33 = tabela_33_categorias[categoria][descricao]
-st.success(
-    f"Descrição: {descricao}\n"
-    f"Método de instalação: {dados33['metodo']}\n"
-    f"Referência: {dados33['referencia']}"
-)
-
-# Exibir imagem se disponível
-if "imagem" in dados33:
-    st.image(
-        dados33["imagem"],
-        caption=f"Ilustração: Método {dados33['metodo']}",
-        use_column_width=True
-    )
 # --- Expansão da Tabela 33 ---
 tabela_33_categorias.update({
     "Eletroduto Embutido em Alvenaria": {
@@ -154,3 +97,37 @@ tabela_33_categorias.update({
         },
     },
 })
+
+# --- Interface Streamlit (única, no final) ---
+st.title("NBR5410 - Ferramenta Interativa")
+
+# --- Seção Tabela 30 ---
+st.header("Tabela 30 - Valores de K")
+material = st.selectbox("Material:", list(valores_k.keys()))
+isolacao = st.selectbox("Isolação:", ["PVC", "EPR/XLPE"])
+if isolacao == "PVC":
+    bitola = st.radio("Seção do condutor:", ["≤ 300 mm²", "> 300 mm²"])
+    chave = "PVC_<=300" if bitola == "≤ 300 mm²" else "PVC_>300"
+else:
+    chave = "EPR_XLPE"
+dados = valores_k[material][chave]
+st.success(
+    f"K = {dados['K']}, Temp inicial = {dados['Temp_inicial']}°C, Temp final = {dados['Temp_final']}°C"
+)
+
+# --- Seção Tabela 33 ---
+st.header("Tabela 33 - Métodos de Instalação")
+categoria = st.selectbox("Selecione a categoria de instalação:", list(tabela_33_categorias.keys()))
+descricao = st.selectbox("Selecione a descrição:", list(tabela_33_categorias[categoria].keys()))
+dados33 = tabela_33_categorias[categoria][descricao]
+st.success(
+    f"Descrição: {descricao}\n"
+    f"Método de instalação: {dados33['metodo']}\n"
+    f"Referência: {dados33['referencia']}"
+)
+if "imagem" in dados33:
+    st.image(
+        dados33["imagem"],
+        caption=f"Ilustração: Método {dados33['metodo']}",
+        use_column_width=True
+    )
