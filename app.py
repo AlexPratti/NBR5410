@@ -1,6 +1,6 @@
 import streamlit as st
 
-# Dicionário com os valores da Tabela 30 (NBR5410)
+# --- Tabela 30 ---
 valores_k = {
     "Cobre": {
         "PVC_<=300": {"K": 115, "Temp_inicial": 70, "Temp_final": 160},
@@ -11,36 +11,37 @@ valores_k = {
         "PVC_<=300": {"K": 76, "Temp_inicial": 70, "Temp_final": 160},
         "PVC_>300": {"K": 68, "Temp_inicial": 70, "Temp_final": 140},
         "EPR_XLPE": {"K": 94, "Temp_inicial": 90, "Temp_final": 250},
-    },
-    "Emenda soldada em cobre": {
-        "PVC_<=300": {"K": 115, "Temp_inicial": 70, "Temp_final": 160},
-        "PVC_>300": {"K": None, "Temp_inicial": None, "Temp_final": None},  # não definido
-        "EPR_XLPE": {"K": None, "Temp_inicial": None, "Temp_final": None},  # não definido
     }
 }
 
-st.title("Tabela 30 - Valores de K (NBR5410)")
+# --- Tabela 33 (exemplo parcial, deve ser expandida com todos os métodos) ---
+tabela_33 = {
+    "Condutores isolados ou cabos unipolares em eletroduto de seção circular embutido em parede termicamente isolante": {"metodo": 1, "referencia": "A1"},
+    "Cabo multipolar em eletroduto de seção circular embutido em parede termicamente isolante": {"metodo": 2, "referencia": "A2"},
+    "Cabos unipolares ou cabo multipolar sobre parede ou espaçado desta menos de 0,3 vez o diâmetro do cabo": {"metodo": 11, "referencia": "C"},
+    "Cabos unipolares ou cabo multipolar em bandeja perfurada": {"metodo": 13, "referencia": "F (unipolares)"},
+    "Condutores nus ou isolados sobre isoladores": {"metodo": 18, "referencia": "G"},
+    "Cabos diretamente enterrados com proteção mecânica adicional": {"metodo": 63, "referencia": "D"},
+    "Cabo multipolar embutido diretamente em parede termicamente isolante": {"metodo": 51, "referencia": "A1"},
+    # ... incluir todos os métodos até o 75A
+}
 
-# Seleção do material
-material = st.selectbox("Selecione o material do condutor:", list(valores_k.keys()))
+st.title("NBR5410 - Ferramenta Interativa")
 
-# Seleção da isolação
-isolacao = st.selectbox("Selecione o tipo de isolação:", ["PVC", "EPR/XLPE"])
-
-# Se for PVC, perguntar a bitola
+# --- Seção Tabela 30 ---
+st.header("Tabela 30 - Valores de K")
+material = st.selectbox("Material:", list(valores_k.keys()))
+isolacao = st.selectbox("Isolação:", ["PVC", "EPR/XLPE"])
 if isolacao == "PVC":
-    bitola = st.radio("Selecione a seção do condutor:", ["≤ 300 mm²", "> 300 mm²"])
+    bitola = st.radio("Seção do condutor:", ["≤ 300 mm²", "> 300 mm²"])
     chave = "PVC_<=300" if bitola == "≤ 300 mm²" else "PVC_>300"
 else:
     chave = "EPR_XLPE"
-
-# Obter valores
 dados = valores_k[material][chave]
+st.success(f"K = {dados['K']}, Temp inicial = {dados['Temp_inicial']}°C, Temp final = {dados['Temp_final']}°C")
 
-# Exibir resultado
-if dados["K"] is not None:
-    st.success(f"Material: {material}\nIsolação: {isolacao}\nK = {dados['K']}\n"
-               f"Temperatura inicial = {dados['Temp_inicial']}°C\n"
-               f"Temperatura final = {dados['Temp_final']}°C")
-else:
-    st.warning("Valores não normalizados para este caso.")
+# --- Seção Tabela 33 ---
+st.header("Tabela 33 - Métodos de Instalação")
+descricao = st.selectbox("Selecione a descrição:", list(tabela_33.keys()))
+dados33 = tabela_33[descricao]
+st.success(f"Método de instalação: {dados33['metodo']}, Referência: {dados33['referencia']}")
