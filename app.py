@@ -131,3 +131,4 @@ if "imagem" in dados33:
         caption=f"Ilustração: Método {dados33['metodo']}",
         use_column_width=True
     )
+
