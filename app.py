@@ -174,6 +174,7 @@ def calcular_secao(material, isolacao, referencia, n_condutores):
     raise ValueError("Não foi possível dimensionar a seção mínima para os parâmetros fornecidos")
 
 
+
 # --- Interface Streamlit ---
 st.title("NBR5410 - Ferramenta Interativa")
 
