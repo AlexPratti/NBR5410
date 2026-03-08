@@ -16,17 +16,12 @@ valores_k = {
 
 # --- Tabela 33 organizada por categorias ---
 tabela_33_categorias = {
-
-"Condutores isolados ou cabos unipolares em eletroduto de seção circular embutido em parede termicamente isolante": {"metodo": 1, "referencia": "A1"},
-    "Cabo multipolar em eletroduto de seção circular embutido em parede termicamente isolante": {"metodo": 2, "referencia": "A2"},
-    "Cabos unipolares ou cabo multipolar sobre parede ou espaçado desta menos de 0,3 vez o diâmetro do cabo": {"metodo": 11, "referencia": "C"},
-    "Cabos unipolares ou cabo multipolar em bandeja perfurada": {"metodo": 13, "referencia": "F (unipolares)"},
-    "Condutores nus ou isolados sobre isoladores": {"metodo": 18, "referencia": "G"},
-    "Cabos diretamente enterrados com proteção mecânica adicional": {"metodo": 63, "referencia": "D"},
-    "Cabo multipolar embutido diretamente em parede termicamente isolante": {"metodo": 51, "referencia": "A1"},
+    "Eletroduto de Seção Circular Embutido em Parede Termicamente Isolante": {
+        "Condutores isolados ou cabos unipolares": {"metodo": 1, "referencia": "A1"},
+        "Cabo multipolar": {"metodo": 2, "referencia": "A2"},
     },
     # ... (demais categorias iguais ao seu código original) ...
-
+}
 
 tabela_36_cobre = {
     0.5: {"A1": {2: 7, 3: 7}, "A2": {2: 7, 3: 7}, "B1": {2: 9, 3: 8}, "B2": {2: 9, 3: 8}, "C": {2: 10, 3: 9}, "D": {2: 12, 3: 10}},
