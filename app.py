@@ -119,9 +119,8 @@ tabela_33_categorias = {
         "Cabo multipolar": {"metodo": 72, "referencia": "B2"},
     },
     "Embutido(s) em Caixilho de Porta": {
-        "Condutores isolados ou cabos Embutido(s) em Caixilho de Porta": {
-        "Condutores isolados ou cabos unipolares": {"metodo": 74, "referencia": "A1"},
-    },
+    "Condutores isolados ou cabos unipolares": {"metodo": 74, "referencia": "A1"},
+},
     "Embutido(s) em Caixilho de Janela": {
         "Condutores isolados ou cabos unipolares": {"metodo": 74, "referencia": "A1"},
     },
