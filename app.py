@@ -14,6 +14,21 @@ valores_k = {
     }
 }
 
+# --- Tabela 33 (exemplo reduzido) ---
+tabela_33_categorias = {
+    "Eletroduto de Seção Circular Embutido em Parede Termicamente Isolante": {
+        "Condutores isolados ou cabos unipolares": {
+            "metodo": 1, "referencia": "A1",
+            "imagem": "https://copilot.microsoft.com/th/id/BCO.a26ec849-7b9d-4bf5-88e6-70c4155d28c2.png"
+        },
+        "Cabo multipolar": {
+            "metodo": 2, "referencia": "A2",
+            "imagem": "https://copilot.microsoft.com/th/id/BCO.a26ec849-7b9d-4bf5-88e6-70c4155d28c2.png"
+        },
+    },
+    # ... continue expandindo até método 75 ...
+}
+
 # --- Funções de interface ---
 def mostrar_tabela30():
     st.subheader("Tabela 30 - Valores de K")
@@ -33,8 +48,8 @@ def mostrar_tabela30():
 
 def mostrar_tabela33():
     st.subheader("Tabela 33 - Métodos de Instalação")
-    categoria = st.selectbox("Selecione a categoria de instalação:", list(tabela_33_categorias.keys()))
-    descricao = st.selectbox("Selecione a descrição:", list(tabela_33_categorias[categoria].keys()))
+    categoria = st.selectbox("Categoria de instalação:", list(tabela_33_categorias.keys()))
+    descricao = st.selectbox("Descrição:", list(tabela_33_categorias[categoria].keys()))
     dados33 = tabela_33_categorias[categoria][descricao]
     st.markdown(f"""
     **Descrição:** {descricao}  
