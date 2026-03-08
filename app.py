@@ -1,20 +1,20 @@
 import streamlit as st
 
-# Dicionário com os valores da Tabela 30
+# Dicionário com os valores da Tabela 30 (NBR5410)
 valores_k = {
     "Cobre": {
         "PVC_<=300": {"K": 115, "Temp_inicial": 70, "Temp_final": 160},
-        "PVC_>300": {"K": 115, "Temp_inicial": 70, "Temp_final": 140},
+        "PVC_>300": {"K": 103, "Temp_inicial": 70, "Temp_final": 140},
         "EPR_XLPE": {"K": 143, "Temp_inicial": 90, "Temp_final": 250},
     },
     "Alumínio": {
         "PVC_<=300": {"K": 76, "Temp_inicial": 70, "Temp_final": 160},
-        "PVC_>300": {"K": 76, "Temp_inicial": 70, "Temp_final": 140},
+        "PVC_>300": {"K": 68, "Temp_inicial": 70, "Temp_final": 140},
         "EPR_XLPE": {"K": 94, "Temp_inicial": 90, "Temp_final": 250},
     },
     "Emenda soldada em cobre": {
         "PVC_<=300": {"K": 115, "Temp_inicial": 70, "Temp_final": 160},
-        "PVC_>300": {"K": 115, "Temp_inicial": 70, "Temp_final": 140},
+        "PVC_>300": {"K": None, "Temp_inicial": None, "Temp_final": None},  # não definido
         "EPR_XLPE": {"K": None, "Temp_inicial": None, "Temp_final": None},  # não definido
     }
 }
