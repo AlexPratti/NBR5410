@@ -14,7 +14,7 @@ valores_k = {
     }
 }
 
-# --- Tabela 33 inicial ---
+# --- Tabela 33 ---
 tabela_33_categorias = {
     "Eletroduto de Seção Circular Embutido em Parede Termicamente Isolante": {
         "Condutores isolados ou cabos unipolares": {
@@ -26,99 +26,8 @@ tabela_33_categorias = {
             "imagem": "https://copilot.microsoft.com/th/id/BCO.a26ec849-7b9d-4bf5-88e6-70c4155d28c2.png"
         },
     },
-    "Cabos em Bandeja Perfurada": {
-        "Cabos unipolares": {
-            "metodo": 13, "referencia": "F",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.87610e91-6071-44e1-a6d4-5ec9c9c207cc.png"
-        },
-    },
-    "Sobre Isoladores": {
-        "Condutores nus ou isolados": {
-            "metodo": 18, "referencia": "G",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.8c20393d-4588-4a66-924f-f5d432aecab3.png"
-        },
-    },
-    "Diretamente Enterrados com Proteção Mecânica Adicional": {
-        "Cabos unipolares ou multipolar": {
-            "metodo": 63, "referencia": "D",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.8c7b77da-d707-49c9-9fa4-b1a14083c262.png"
-        },
-    },
+    # ... demais métodos ...
 }
-
-# --- Expansão da Tabela 33 (até método 75) ---
-tabela_33_categorias.update({
-    "Eletroduto Embutido em Alvenaria": {
-        "Condutores isolados ou cabos unipolares": {
-            "metodo": 21, "referencia": "B1",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.eletroduto_embutido_unipolar.png"
-        },
-        "Cabo multipolar": {
-            "metodo": 22, "referencia": "B2",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.eletroduto_embutido_multipolar.png"
-        },
-    },
-    "Eletroduto Embutido em Laje": {
-        "Cabos unipolares": {
-            "metodo": 23, "referencia": "B3",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.eletroduto_laje_unipolar.png"
-        },
-        "Cabos multipolares": {
-            "metodo": 24, "referencia": "B4",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.eletroduto_laje_multipolar.png"
-        },
-    },
-    "Eletroduto Aparente": {
-        "Condutores isolados ou cabos unipolares": {
-            "metodo": 31, "referencia": "C1",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.eletroduto_aparente_unipolar.png"
-        },
-        "Cabo multipolar": {
-            "metodo": 32, "referencia": "C2",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.eletroduto_aparente_multipolar.png"
-        },
-    },
-    "Eletroduto Enterrado": {
-        "Cabos unipolares ou multipolar": {
-            "metodo": 33, "referencia": "C3",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.eletroduto_enterrado.png"
-        },
-    },
-    "Em Leito": {
-        "Cabos unipolares": {
-            "metodo": 41, "referencia": "E",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.em_leito_unipolar.png"
-        },
-        "Cabos multipolares": {
-            "metodo": 42, "referencia": "E",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.em_leito_multipolar.png"
-        },
-    },
-    "Canaleta Embutida em Parede": {
-        "Cabos unipolares ou multipolar": {
-            "metodo": 51, "referencia": "H",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.canaleta_embutida.png"
-        },
-    },
-    "Canaleta Aparente": {
-        "Cabos unipolares ou multipolar": {
-            "metodo": 52, "referencia": "H2",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.canaleta_aparente.png"
-        },
-    },
-    "Fixado no Teto": {
-        "Cabos unipolares ou multipolar": {
-            "metodo": 71, "referencia": "I",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.fixado_teto.png"
-        },
-    },
-    "Suspenso": {
-        "Cabos unipolares ou multipolar": {
-            "metodo": 75, "referencia": "J",
-            "imagem": "https://copilot.microsoft.com/th/id/BCO.suspenso.png"
-        },
-    },
-})
 
 # --- Funções de interface ---
 def mostrar_tabela30():
@@ -140,12 +49,11 @@ def mostrar_tabela33():
     categoria = st.selectbox("Selecione a categoria de instalação:", list(tabela_33_categorias.keys()))
     descricao = st.selectbox("Selecione a descrição:", list(tabela_33_categorias[categoria].keys()))
     dados33 = tabela_33_categorias[categoria][descricao]
-    st.markdown(f"""
-        **Descrição:** {descricao}  
-        **Método de instalação:** {dados33['metodo']}  
-        **Referência:** {dados33['referencia']}
-    """)
-
+    st.success(
+        f"Descrição: {descricao}\n"
+        f"Método de instalação: {dados33['metodo']}\n"
+        f"Referência: {dados33['referencia']}"
+    )
     if "imagem" in dados33:
         st.image(
             dados33["imagem"],
@@ -153,7 +61,13 @@ def mostrar_tabela33():
             use_column_width=True
         )
 
-# --- Execução principal ---
+# --- Execução principal com abas ---
 st.title("NBR5410 - Ferramenta Interativa")
-mostrar_tabela30()
-mostrar_tabela33()
+
+tab1, tab2 = st.tabs(["Tabela 30 - Valores de K", "Tabela 33 - Métodos de Instalação"])
+
+with tab1:
+    mostrar_tabela30()
+
+with tab2:
+    mostrar_tabela33()
