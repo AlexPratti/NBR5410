@@ -261,7 +261,7 @@ tabela_38_cobre = {
     1000: {"E": {2: 1125, 3: 982}, "F": {2: 991, 3: 875}, "G": {2: 1258, 3: 1075}}
 }
 
-
+print(calcular_secao("Cobre", "XLPE", "F", 2, 1))
 
 
 tabela_39 = {
