@@ -261,11 +261,14 @@ tabela_38_cobre = {
     1000: {"E": {2: 1125, 3: 982}, "F": {2: 991, 3: 875}, "G": {2: 1258, 3: 1075}}
 }
 
-tabela_38 = {
-    "Cobre": tabela_38_cobre,
-    "Alumínio": tabela_38_aluminio
-}
+# tabela_38 = {
+    # "Cobre": tabela_38_cobre,
+    # "Alumínio": tabela_38_aluminio
+# }
 
+tabela_38 = {
+    "Cobre": tabela_38_cobre   
+}
 
 tabela_39 = {
     "Cobre": {
